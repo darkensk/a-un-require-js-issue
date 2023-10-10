@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Comment out this script that load require.js  -->
+    <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
+
+    <script>
+      function loadScript() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src =
+          "https://api.unifaun.com/rs-extapi/v1/delivery-checkouts-widget/unifaun-checkout-all.min.js";
+        script.async = true;
+        script.onload = function () {
+          if (window.UnifaunCheckout) {
+            alert("Everything OK - UnifaunCheckout found on window");
+          } else {
+            alert("Error - no UnifaunCheckout found on window element");
+          }
+        };
+
+        document.head.appendChild(script);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Issue example</h1>
+
+    <button style="width: 300px; height: 100px" onclick="loadScript()">
+      Click to add UnifaunCheckout script to page!
+    </button>
+  </body>
+</html>
