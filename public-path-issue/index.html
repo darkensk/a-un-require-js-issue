@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
+    
+
+        <script>
+            function loadWithRequire() {
+                require.config({
+                    paths: {
+                        UnifaunCheckout: "https://api.unifaun.com/rs-extapi/v1/delivery-checkouts-widget/unifaun-checkout-all.min",
+                    },
+                });
+                require(["UnifaunCheckout"], function (unifaunCheckout) {
+                    console.log("Loaded module unifaun with require", unifaunCheckout);
+                    window.UnifaunCheckout=unifaunCheckout; //append loaded module to window object
+                    
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Issue example</h1>
+
+        <button style="width: 300px; height: 100px;" onclick="loadWithRequire()">
+            Click to add UnifaunCheckout script to page!
+        </button>
+        <!-- Last script tag with no src attribute -->
+        <script></script>
+        <!-- Uncoment to fix the issue: Last script tag with a src attribute set -->
+        <!-- <script src=""></script> -->
+    </body>
+</html>
